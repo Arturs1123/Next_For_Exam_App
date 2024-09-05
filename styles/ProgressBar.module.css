@@ -1,0 +1,26 @@
+.progressBar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progressBarContainer {
+  display: flex;
+  gap: 3px;
+}
+
+.segment {
+  flex: 1;
+  height: 6px;
+  border-radius: 5px; 
+  background-color: #52A754;
+}
+
+.completed {
+  opacity: 1;
+}
+
+.remaining {
+  opacity: 0.1;
+}
+  
