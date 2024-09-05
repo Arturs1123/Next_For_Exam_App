@@ -1,0 +1,26 @@
+.header__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.title__wrapper {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+    width: 109px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    color: #FF7355;
+    border-bottom: 2px solid #FF7355;
+}

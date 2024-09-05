@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import questions from "@/data/Questions"
+
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Svg from "@/components/Svg";
@@ -7,10 +11,19 @@ import Footer from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [completedQuestions, setCompletedQuestions] = useState(0);
+
+  useEffect(() => {
+    const storedCount = localStorage.getItem('completedQuestions');
+    if (storedCount) {
+      setCompletedQuestions(parseInt(storedCount, 10));
+    }
+  }, []);
+
   return (
     <>
-      <main className={`${styles.container} ${inter.className}`}>
-        <div className={`${styles.main}`}>
+      <main className={`container ${inter.className}`}>
+        <div className={`main`}>
           {/* header */}
           <div className={`${styles.header}`}>
             <h6>
@@ -34,13 +47,15 @@ export default function Home() {
               <div className={`${styles.descriptionContent__label}`}>
                 <Svg url="cap" />
                 <div className={`${styles.descriptionContent__labelText}`}>
-                  <span className="text-20">Learning</span>
+                  <Link href="/learning" className='nounderline'>
+                    <span className="text-20">Learning</span>
+                  </Link>
                   <span className="text-14 color-gray-100 weight-400">Category В</span>
                 </div>
               </div>
               <Svg url="chevron-circle-right" />
             </div>
-            <ProgressBar completed={2} total={20} />
+            <ProgressBar completed={completedQuestions} total={questions.length} />
           </div>
           {/* category */}
           <div className={`${styles.category}`}>
